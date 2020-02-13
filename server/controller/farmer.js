@@ -37,7 +37,7 @@ exports.login = async (req, res) => {
 	const { mobile, password } = req.body;
 
 	try {
-		const foundFarmer = await Farmer.exists({ mobile: mobile });
+		const foundFarmer = await Farmer.findOne({ mobile: mobile });
 		if (foundFarmer) {
 			const isValid = foundFarmer.comparePassword(password);
 
