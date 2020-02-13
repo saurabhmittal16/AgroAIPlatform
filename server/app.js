@@ -7,8 +7,8 @@ const app = fastify({
 
 require("dotenv").config();
 
-const { MONGO_USERNAME, MONGO_PASSWORD, MONGO_DB } = process.env;
-const mongo_url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@localhost:27017/${MONGO_DB}?authSource=admin`;
+const { MONGO_USERNAME, MONGO_PASSWORD, MONGO_DB, MONGO_HOST, MONGO_PORT } = process.env;
+const mongo_url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
 
 const routes = require("./routes");
 
