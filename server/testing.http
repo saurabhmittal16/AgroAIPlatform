@@ -1,0 +1,10 @@
+### test farmer signup
+POST http://localhost:8080/api/auth/farmer/signup
+Content-Type: application/json
+
+{
+	"name": "Ram",
+	"password": "password",
+	"mobile": "9090909090",
+	"address": "221B, Baker Street, London"
+}

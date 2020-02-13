@@ -5,7 +5,12 @@ const app = fastify({
 	ignoreTrailingSlash: true
 });
 
-const mongo_url = "mongodb://localhost:27017/agroai";
+require("dotenv").config();
+
+const { MONGO_USERNAME, MONGO_PASSWORD, MONGO_DB } = process.env;
+const mongo_url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@localhost:27017/${MONGO_DB}?authSource=admin`;
+
+const routes = require("./routes");
 
 app.use(cors());
 
@@ -14,6 +19,9 @@ app.get("/", async (request, res) => {
 		message: "Welcome to AgroAI Platform"
 	};
 });
+
+// Register routes defined in different modules
+routes.forEach(route => app.route(route));
 
 mongoose
 	.connect(mongo_url, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -28,3 +36,5 @@ mongoose
 		});
 	})
 	.catch(err => console.log(err.message));
+
+mongoose.set("useCreateIndex", true);
