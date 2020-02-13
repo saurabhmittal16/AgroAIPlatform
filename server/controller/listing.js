@@ -2,10 +2,27 @@ const Listing = require("../models/listing");
 
 exports.addNew = async (req, res) => {
 	const { name, price, image } = req.body;
-	const { mobile, id } = req.decoded;
+	const { id } = req.decoded;
 
-	console.log(name, price, image);
-	console.log(mobile, id);
+	try {
+		const createdListing = await Listing.create({
+			name,
+			price,
+			image,
+			owner: id
+		});
 
-	return "OK";
+		if (createdListing) {
+			console.log(createdListing);
+			return {
+				success: true,
+				message: "Added listing"
+			};
+		} else {
+			return res.code(500);
+		}
+	} catch (err) {
+		console.log(err);
+		return res.code(500);
+	}
 };
