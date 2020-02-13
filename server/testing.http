@@ -37,3 +37,14 @@ Content-Type: application/json
 	"password": "password",
 	"mobile": "9090909091"
 }
+
+### add listing
+POST http://localhost:8080/api/listing
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtb2JpbGUiOiI5MDkwOTA5MDkwIiwiaWQiOiI1ZTQ1MjZiZjBjZTg2NzI2MWVmZTUzOWEiLCJpYXQiOjE1ODE1OTMyODUsImV4cCI6MTU4MjE5ODA4NX0.y5CrL2G6iUe76hRK959cahbtn5OqBcjFdOSRYddMc9o
+
+{
+	"name": "Wheat",
+	"price": 123,
+	"image": "/upload/luvb.jpg"
+}
