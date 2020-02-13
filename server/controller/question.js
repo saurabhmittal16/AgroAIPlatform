@@ -6,11 +6,11 @@ exports.addQuestion = async (req, res) => {
 	const { id } = req.decoded;
 
 	try {
-		const foundFarmer = await Farmer.findOne({ _id: id });
-		if (foundFarmer) {
+		const foundFarmer = await Farmer.exists({ _id: id });
+		if (!!foundFarmer) {
 			const addedQuestion = await Question.create({
 				question: question,
-				by: foundFarmer._id
+				by: id
 			});
 
 			return {

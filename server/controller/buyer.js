@@ -6,7 +6,7 @@ const Buyer = require("../models/buyer");
 exports.signup = async (req, res) => {
 	const { password, name, mobile, address } = req.body;
 
-	const existingBuyer = await Buyer.findOne({ mobile: mobile });
+	const existingBuyer = await Buyer.exists({ mobile: mobile });
 	if (existingBuyer) {
 		return {
 			sucess: false,
@@ -36,7 +36,7 @@ exports.login = async (req, res) => {
 	const { mobile, password } = req.body;
 
 	try {
-		const foundBuyer = await Buyer.findOne({ mobile: mobile });
+		const foundBuyer = await Buyer.exists({ mobile: mobile });
 		if (foundBuyer) {
 			const isValid = foundBuyer.comparePassword(password);
 

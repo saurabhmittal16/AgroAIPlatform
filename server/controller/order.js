@@ -8,14 +8,14 @@ exports.addOrder = async (req, res) => {
 	const { id: buyerID } = req.decoded;
 
 	try {
-		const foundBuyer = await Buyer.findOne({ _id: buyerID });
+		const foundBuyer = await Buyer.exists({ _id: buyerID });
 
 		// if buyer exists
 		if (foundBuyer) {
-			const existingListing = await Listing.findOne({ _id: listingID });
+			const existingListing = await Listing.findById(listingID);
 
 			// if listing exists
-			if (existingListing && existingListing.quantity >= quantity) {
+			if (!!existingListing && existingListing.quantity >= quantity) {
 				const createdOrder = await Order.create({
 					listing: listingID,
 					buyer: buyerID,
@@ -50,7 +50,7 @@ exports.getOrdersFarmer = async (req, res) => {
 	const { id } = req.decoded;
 
 	try {
-		const foundFarmer = await Farmer.findOne({ _id: id });
+		const foundFarmer = await Farmer.exists({ _id: id });
 		if (foundFarmer) {
 			const orders = await Order.find({ farmer: id }, { farmer: 0, updatedAt: 0 })
 				.populate("buyer", {
@@ -77,7 +77,7 @@ exports.getOrdersBuyer = async (req, res) => {
 	console.log(id);
 
 	try {
-		const foundBuyer = await Buyer.findOne({ _id: id });
+		const foundBuyer = await Buyer.exists({ _id: id });
 		if (foundBuyer) {
 			const orders = await Order.find({ buyer: id }, { buyer: 0, updatedAt: 0 })
 				.populate("farmer", {

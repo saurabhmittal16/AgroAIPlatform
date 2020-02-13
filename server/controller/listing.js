@@ -22,7 +22,7 @@ exports.addNew = async (req, res) => {
 	const { id } = req.decoded;
 
 	try {
-		const foundFarmer = await Farmer.findOne({ _id: id });
+		const foundFarmer = await Farmer.exists({ _id: id });
 
 		if (foundFarmer) {
 			const createdListing = await Listing.create({
@@ -58,11 +58,12 @@ exports.getListings = async (req, res) => {
 	const { id } = req.decoded;
 
 	try {
-		const foundBuyer = await Buyer.findOne({ _id: id });
+		const foundBuyer = await Buyer.exists({ _id: id });
 
 		if (foundBuyer) {
 			// get owner data from listing - name, id and address
 			const listings = await Listing.find({}).populate("owner", { _id: 1, name: 1, address: 1 });
+
 			return listings.map(item => improveListing(item));
 		} else {
 			console.log("Invalid buyer credentials");
@@ -83,7 +84,7 @@ exports.getSingleListing = async (req, res) => {
 		return res.code(404);
 	} else {
 		try {
-			const foundListing = await Listing.findOne({ _id: id }).populate("owner", { _id: 1, name: 1, address: 1 });
+			const foundListing = await Listing.findById(id).populate("owner", { _id: 1, name: 1, address: 1 });
 			return improveListing(foundListing);
 		} catch (err) {
 			console.log("Could not find listing", err);
