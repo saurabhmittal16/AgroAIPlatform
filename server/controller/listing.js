@@ -1,28 +1,73 @@
 const Listing = require("../models/listing");
+const Farmer = require("../models/farmer");
+const Buyer = require("../models/buyer");
 
 exports.addNew = async (req, res) => {
-	const { name, price, image } = req.body;
+	const { name, price, image, quantity } = req.body;
 	const { id } = req.decoded;
 
 	try {
-		const createdListing = await Listing.create({
-			name,
-			price,
-			image,
-			owner: id
-		});
+		const foundFarmer = await Farmer.findOne({ _id: id });
 
-		if (createdListing) {
-			console.log(createdListing);
-			return {
-				success: true,
-				message: "Added listing"
-			};
+		if (foundFarmer) {
+			try {
+				const createdListing = await Listing.create({
+					name,
+					price,
+					image,
+					quantity,
+					owner: id
+				});
+
+				if (createdListing) {
+					// console.log(createdListing);
+					return {
+						success: true,
+						message: "Added listing"
+					};
+				} else {
+					return res.code(500);
+				}
+			} catch (err) {
+				console.log("Could not create listing", err);
+				return res.code(500).send({
+					message: "Could not create listing"
+				});
+			}
 		} else {
-			return res.code(500);
+			console.log("Invalid farmer credentials");
+			return res.code(500).send({
+				message: "Invalid farmer credentials"
+			});
 		}
 	} catch (err) {
-		console.log(err);
+		console.log("Could not find farmer", err);
+		return res.send(500);
+	}
+};
+
+exports.getListings = async (req, res) => {
+	const { id } = req.decoded;
+
+	try {
+		const foundBuyer = await Buyer.findOne({ _id: id });
+
+		if (foundBuyer) {
+			try {
+				const listings = await Listing.find({});
+				return listings;
+			} catch (err) {
+				console.log(err);
+				return res.code(500);
+			}
+		} else {
+			console.log("Invalid buyer credentials");
+			return res.code(500).send({
+				message: "Invalid buyer credentials"
+			});
+		}
+	} catch (err) {
+		console.log("Cound not find buyer", err);
 		return res.code(500);
 	}
 };

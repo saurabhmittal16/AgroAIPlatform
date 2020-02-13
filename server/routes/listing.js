@@ -5,6 +5,11 @@ const routes = [
 		method: "POST",
 		url: "/api/listing",
 		handler: controller.addNew
+	},
+	{
+		method: "GET",
+		url: "/api/listing",
+		handler: controller.getListings
 	}
 ];
 

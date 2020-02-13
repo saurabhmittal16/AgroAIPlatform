@@ -8,6 +8,9 @@ const listingSchema = new mongoose.Schema(
 		// price of crop per kg
 		price: Number,
 
+		// quantity of produce
+		quantity: Number,
+
 		// url of uploaded image - relative URL of Flask server
 		image: String,
 

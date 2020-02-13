@@ -3,10 +3,10 @@ POST http://localhost:8080/api/auth/farmer/signup
 Content-Type: application/json
 
 {
-	"name": "Ram",
+	"name": "Sita",
 	"password": "password",
-	"mobile": "9090909090",
-	"address": "221B, Baker Street, London"
+	"mobile": "9191919191",
+	"address": "221B, Home Road, Delhi"
 }
 
 ### test farmer login
@@ -15,7 +15,7 @@ Content-Type: application/json
 
 {
 	"password": "password",
-	"mobile": "9090909090"
+	"mobile": "9191919191"
 }
 
 ### test buyer signup
@@ -41,10 +41,15 @@ Content-Type: application/json
 ### add listing
 POST http://localhost:8080/api/listing
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtb2JpbGUiOiI5MDkwOTA5MDkwIiwiaWQiOiI1ZTQ1MjZiZjBjZTg2NzI2MWVmZTUzOWEiLCJpYXQiOjE1ODE1OTMyODUsImV4cCI6MTU4MjE5ODA4NX0.y5CrL2G6iUe76hRK959cahbtn5OqBcjFdOSRYddMc9o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtb2JpbGUiOiI5MTkxOTE5MTkxIiwiaWQiOiI1ZTQ1NTBjYWNhNDdjZTRhYzVmYmI4YjciLCJpYXQiOjE1ODE2MDA5ODAsImV4cCI6MTU4MjIwNTc4MH0.azzZ3sj4WgBEN1ipcy6U-gDSSss8QMFZBUW9C1m-xSc
 
 {
 	"name": "Wheat",
-	"price": 123,
-	"image": "/upload/luvb.jpg"
+	"price": 256,
+	"image": "/upload/baed.jpg",
+	"quantity": 10
 }
+
+### get listings
+GET http://localhost:8080/api/listing
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtb2JpbGUiOiI5MDkwOTA5MDkxIiwiaWQiOiI1ZTQ1MjkxMDE4ZDY5YTJiMTc1YzdiNGMiLCJpYXQiOjE1ODE2MDI0OTIsImV4cCI6MTU4MjIwNzI5Mn0.67Vh4Wx94a7adRe8fSWYNT9rjvpOySBj1xwDsSB8VVs
