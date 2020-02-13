@@ -14,6 +14,12 @@ const orderSchema = new mongoose.Schema(
 			ref: "Buyer"
 		},
 
+		// farmer ID: storing redundant data to optimize order searching
+		seller: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "Farmer"
+		},
+
 		// quantity of crop ordered
 		quantity: Number
 	},

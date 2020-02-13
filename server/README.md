@@ -14,3 +14,4 @@ The Node server for the AgroAI platform.
 - No available boolean on listing which denotes the availability of produce
 - No pagination in feed for buyer
 - No updation of listing after successful order
+- No order status for Farmer and Buyer (picked-up, confirmed)

@@ -1,4 +1,5 @@
 const Buyer = require("../models/buyer");
+const Farmer = require("../models/farmer");
 const Listing = require("../models/listing");
 const Order = require("../models/order");
 
@@ -21,6 +22,7 @@ exports.addOrder = async (req, res) => {
 						const createdOrder = await Order.create({
 							listing: listingID,
 							buyer: buyerID,
+							seller: existingListing.owner,
 							quantity: quantity
 						});
 
