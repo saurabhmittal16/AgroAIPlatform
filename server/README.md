@@ -12,6 +12,7 @@ The Node server for the AgroAI platform.
 
 ## Points ignored for now
 
+- Not checking if all values are submitted for signup
 - No available boolean on listing which denotes the availability of produce
 - No pagination in feed for buyer
 - No updation of listing after successful order

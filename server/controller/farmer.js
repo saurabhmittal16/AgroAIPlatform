@@ -4,7 +4,7 @@ const config = require("../config");
 const Farmer = require("../models/farmer");
 
 exports.signup = async (req, res) => {
-	const { password, name, mobile, address } = req.body;
+	const { password, name, mobile, address, lattitude, longitude } = req.body;
 
 	const existingFarmer = await Farmer.exists({ mobile: mobile });
 	if (existingFarmer) {
@@ -19,7 +19,9 @@ exports.signup = async (req, res) => {
 			password,
 			name,
 			mobile,
-			address
+			address,
+			lattitude,
+			longitude
 		});
 
 		return {

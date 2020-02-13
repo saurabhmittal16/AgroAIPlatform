@@ -3,10 +3,12 @@ POST http://localhost:8080/api/auth/farmer/signup
 Content-Type: application/json
 
 {
-	"name": "Sita",
+	"name": "Hanuman",
 	"password": "password",
-	"mobile": "9191919191",
-	"address": "221B, Home Road, Delhi"
+	"mobile": "9292929292",
+	"address": "221B, Ayodhya",
+	"lattitude": 28.6204793,
+	"longitude": 77.0679478
 }
 
 ### test farmer login

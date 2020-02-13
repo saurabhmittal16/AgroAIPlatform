@@ -4,7 +4,7 @@ const config = require("../config");
 const Buyer = require("../models/buyer");
 
 exports.signup = async (req, res) => {
-	const { password, name, mobile, address } = req.body;
+	const { password, name, mobile, address, lattitude, longitude } = req.body;
 
 	const existingBuyer = await Buyer.exists({ mobile: mobile });
 	if (existingBuyer) {
@@ -19,7 +19,9 @@ exports.signup = async (req, res) => {
 			password,
 			name,
 			mobile,
-			address
+			address,
+			lattitude,
+			longitude
 		});
 
 		return {
