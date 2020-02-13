@@ -25,29 +25,22 @@ exports.addNew = async (req, res) => {
 		const foundFarmer = await Farmer.findOne({ _id: id });
 
 		if (foundFarmer) {
-			try {
-				const createdListing = await Listing.create({
-					name,
-					price,
-					image,
-					quantity,
-					owner: id
-				});
+			const createdListing = await Listing.create({
+				name,
+				price,
+				image,
+				quantity,
+				owner: id
+			});
 
-				if (createdListing) {
-					// console.log(createdListing);
-					return {
-						success: true,
-						message: "Added listing"
-					};
-				} else {
-					return res.code(500);
-				}
-			} catch (err) {
-				console.log("Could not create listing", err);
-				return res.code(500).send({
-					message: "Could not create listing"
-				});
+			if (createdListing) {
+				// console.log(createdListing);
+				return {
+					success: true,
+					message: "Added listing"
+				};
+			} else {
+				return res.code(500);
 			}
 		} else {
 			console.log("Invalid farmer credentials");
@@ -68,14 +61,9 @@ exports.getListings = async (req, res) => {
 		const foundBuyer = await Buyer.findOne({ _id: id });
 
 		if (foundBuyer) {
-			try {
-				// get owner data from listing - name, id and address
-				const listings = await Listing.find({}).populate("owner", { _id: 1, name: 1, address: 1 });
-				return listings.map(item => improveListing(item));
-			} catch (err) {
-				console.log(err);
-				return res.code(500);
-			}
+			// get owner data from listing - name, id and address
+			const listings = await Listing.find({}).populate("owner", { _id: 1, name: 1, address: 1 });
+			return listings.map(item => improveListing(item));
 		} else {
 			console.log("Invalid buyer credentials");
 			return res.code(500).send({

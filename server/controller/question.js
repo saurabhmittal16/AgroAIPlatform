@@ -8,19 +8,14 @@ exports.addQuestion = async (req, res) => {
 	try {
 		const foundFarmer = await Farmer.findOne({ _id: id });
 		if (foundFarmer) {
-			try {
-				const addedQuestion = await Question.create({
-					question: question,
-					by: foundFarmer._id
-				});
+			const addedQuestion = await Question.create({
+				question: question,
+				by: foundFarmer._id
+			});
 
-				return {
-					message: "Question added"
-				};
-			} catch (err) {
-				console.log(err);
-				return res.code(500);
-			}
+			return {
+				message: "Question added"
+			};
 		} else {
 			console.log("Invalid farmer credentials");
 			return res.code(500).send({
