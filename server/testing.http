@@ -75,3 +75,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtb2JpbGUiOiI5MDkwO
 ### test buyer orders
 GET http://localhost:8080/api/order/buyer
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtb2JpbGUiOiI5MDkwOTA5MDkxIiwiaWQiOiI1ZTQ1MjkxMDE4ZDY5YTJiMTc1YzdiNGMiLCJpYXQiOjE1ODE2MDI0OTIsImV4cCI6MTU4MjIwNzI5Mn0.67Vh4Wx94a7adRe8fSWYNT9rjvpOySBj1xwDsSB8VVs
+
+
+### test add question
+POST http://localhost:8080/api/question
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtb2JpbGUiOiI5MDkwOTA5MDkwIiwiaWQiOiI1ZTQ1MjZiZjBjZTg2NzI2MWVmZTUzOWEiLCJpYXQiOjE1ODE2MDgwNDAsImV4cCI6MTU4MjIxMjg0MH0.CVuKmqNKpHwvQ5kSdGiHCsnFb-t2MediedmLE_miAAo
+
+{
+	"question": "What is the capital of India?"
+}

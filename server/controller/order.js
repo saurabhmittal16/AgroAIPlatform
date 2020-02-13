@@ -94,7 +94,7 @@ exports.getOrdersBuyer = async (req, res) => {
 
 	try {
 		const foundBuyer = await Buyer.findOne({ _id: id });
-		console.log(foundBuyer);
+		// console.log(foundBuyer);
 		if (foundBuyer) {
 			try {
 				const orders = await Order.find({ buyer: id }, { buyer: 0, updatedAt: 0 })
