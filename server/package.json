@@ -1,0 +1,19 @@
+{
+	"name": "agroai-server",
+	"version": "0.0.1",
+	"description": "Node server for AgroAI project.",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js",
+		"dev": "nodemon index.js"
+	},
+	"license": "ISC",
+	"dependencies": {
+		"cors": "^2.8.5",
+		"fastify": "^2.11.0",
+		"mongoose": "^5.8.3"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.2"
+	}
+}

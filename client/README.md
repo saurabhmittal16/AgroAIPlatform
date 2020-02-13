@@ -4,6 +4,5 @@ The client app for the AgroAI platform.
 
 ## To-Do
 
-[ ] Add Redux
-[ ] Support multiple languages
+[ ] Support multiple languages  
 [ ] Add code splitting
