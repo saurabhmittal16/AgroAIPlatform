@@ -57,3 +57,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtb2JpbGUiOiI5MDkwO
 ### get listings
 GET http://localhost:8080/api/listing/5e45500fca47ce4ac5fbb8af
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtb2JpbGUiOiI5MDkwOTA5MDkxIiwiaWQiOiI1ZTQ1MjkxMDE4ZDY5YTJiMTc1YzdiNGMiLCJpYXQiOjE1ODE2MDI0OTIsImV4cCI6MTU4MjIwNzI5Mn0.67Vh4Wx94a7adRe8fSWYNT9rjvpOySBj1xwDsSB8VVs
+
+### test order
+POST http://localhost:8080/api/order
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtb2JpbGUiOiI5MDkwOTA5MDkxIiwiaWQiOiI1ZTQ1MjkxMDE4ZDY5YTJiMTc1YzdiNGMiLCJpYXQiOjE1ODE2MDI0OTIsImV4cCI6MTU4MjIwNzI5Mn0.67Vh4Wx94a7adRe8fSWYNT9rjvpOySBj1xwDsSB8VVs
+
+{
+	"listingID": "5e45500fca47ce4ac5fbb8af",
+	"quantity": 1
+}
