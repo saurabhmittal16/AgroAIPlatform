@@ -16,3 +16,4 @@ The Node server for the AgroAI platform.
 - No pagination in feed for buyer
 - No updation of listing after successful order
 - No order status for Farmer and Buyer (picked-up, confirmed)
+- No checking for user viewing his own questions in the feed

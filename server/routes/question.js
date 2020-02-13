@@ -8,8 +8,13 @@ const routes = [
 	},
 	{
 		method: "GET",
+		url: "/api/question",
+		handler: controller.getQuestionFeed
+	},
+	{
+		method: "GET",
 		url: "/api/question/:id",
-		handler: controller.getQuestion
+		handler: controller.getQuestionAnswers
 	},
 	{
 		method: "POST",

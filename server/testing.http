@@ -98,3 +98,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtb2JpbGUiOiI5MDkwO
 {
 	"answer": "Delhi is the capital of India"
 }
+
+### test question feed
+GET http://localhost:8080/api/question
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtb2JpbGUiOiI5MDkwOTA5MDkwIiwiaWQiOiI1ZTQ1MjZiZjBjZTg2NzI2MWVmZTUzOWEiLCJpYXQiOjE1ODE2MDgwNDAsImV4cCI6MTU4MjIxMjg0MH0.CVuKmqNKpHwvQ5kSdGiHCsnFb-t2MediedmLE_miAAo

@@ -29,7 +29,7 @@ exports.addQuestion = async (req, res) => {
 	}
 };
 
-exports.getQuestion = async (req, res) => {
+exports.getQuestionAnswers = async (req, res) => {
 	const { id: questionID } = req.params;
 	const { id } = req.decoded;
 
@@ -45,6 +45,25 @@ exports.getQuestion = async (req, res) => {
 				question: foundQuestion,
 				answers: answers
 			};
+		} else {
+			console.log("Invalid farmer credentials");
+			return res.code(500).send({
+				message: "Invalid farmer credentials"
+			});
+		}
+	} catch (err) {
+		console.log(err);
+		return res.code(500);
+	}
+};
+
+exports.getQuestionFeed = async (req, res) => {
+	const { id } = req.decoded;
+	try {
+		const foundFarmer = await Farmer.exists({ _id: id });
+		if (foundFarmer) {
+			const foundQuestions = await Question.find({}).populate("by", { name: 1, mobile: 1 });
+			return foundQuestions;
 		} else {
 			console.log("Invalid farmer credentials");
 			return res.code(500).send({
