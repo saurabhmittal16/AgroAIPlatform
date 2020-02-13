@@ -9,6 +9,15 @@ Content-Type: application/json
 	"address": "221B, Baker Street, London"
 }
 
+### test farmer login
+POST http://localhost:8080/api/auth/farmer/login
+Content-Type: application/json
+
+{
+	"password": "password",
+	"mobile": "9090909090"
+}
+
 ### test buyer signup
 POST http://localhost:8080/api/auth/buyer/signup
 Content-Type: application/json
@@ -18,4 +27,13 @@ Content-Type: application/json
 	"password": "password",
 	"mobile": "9090909091",
 	"address": "221B, Baker Street, New Delhi"
+}
+
+### test buyer login
+POST http://localhost:8080/api/auth/buyer/login
+Content-Type: application/json
+
+{
+	"password": "password",
+	"mobile": "9090909091"
 }
