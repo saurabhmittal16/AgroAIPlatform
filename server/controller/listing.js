@@ -2,6 +2,21 @@ const Listing = require("../models/listing");
 const Farmer = require("../models/farmer");
 const Buyer = require("../models/buyer");
 
+const improveListing = obj => {
+	let ownerData = obj["owner"];
+	delete obj["owner"];
+	return {
+		id: obj._id,
+		name: obj.name,
+		price: obj.price,
+		image: obj.image,
+		quantity: obj.quantity,
+		farmerID: ownerData._id,
+		farmerName: ownerData.name,
+		farmerAddress: ownerData.address
+	};
+};
+
 exports.addNew = async (req, res) => {
 	const { name, price, image, quantity } = req.body;
 	const { id } = req.decoded;
@@ -56,7 +71,7 @@ exports.getListings = async (req, res) => {
 			try {
 				// get owner data from listing - name, id and address
 				const listings = await Listing.find({}).populate("owner", { _id: 1, name: 1, address: 1 });
-				return listings;
+				return listings.map(item => improveListing(item));
 			} catch (err) {
 				console.log(err);
 				return res.code(500);
@@ -70,5 +85,21 @@ exports.getListings = async (req, res) => {
 	} catch (err) {
 		console.log("Cound not find buyer", err);
 		return res.code(500);
+	}
+};
+
+exports.getSingleListing = async (req, res) => {
+	const { id } = req.params;
+
+	if (!id) {
+		return res.code(404);
+	} else {
+		try {
+			const foundListing = await Listing.findOne({ _id: id }).populate("owner", { _id: 1, name: 1, address: 1 });
+			return improveListing(foundListing);
+		} catch (err) {
+			console.log("Could not find listing", err);
+			return res.code(500);
+		}
 	}
 };

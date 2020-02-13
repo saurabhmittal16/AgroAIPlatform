@@ -10,6 +10,11 @@ const routes = [
 		method: "GET",
 		url: "/api/listing",
 		handler: controller.getListings
+	},
+	{
+		method: "GET",
+		url: "/api/listing/:id",
+		handler: controller.getSingleListing
 	}
 ];
 
