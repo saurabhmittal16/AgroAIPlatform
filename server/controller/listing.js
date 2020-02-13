@@ -54,7 +54,8 @@ exports.getListings = async (req, res) => {
 
 		if (foundBuyer) {
 			try {
-				const listings = await Listing.find({});
+				// get owner data from listing - name, id and address
+				const listings = await Listing.find({}).populate("owner", { _id: 1, name: 1, address: 1 });
 				return listings;
 			} catch (err) {
 				console.log(err);
