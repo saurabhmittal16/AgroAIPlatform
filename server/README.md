@@ -6,7 +6,7 @@ The Node server for the AgroAI platform.
 
 - [x] Feed for Buyer
 - [x] Order procedure
-- [ ] Order listing for Farmer and Buyer
+- [x] Order listing for Farmer and Buyer
 - [ ] Question Answer
 
 ## Points ignored for now
