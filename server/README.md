@@ -8,7 +8,7 @@ The Node server for the AgroAI platform.
 - [x] Order procedure
 - [x] Order listing for Farmer and Buyer
 - [x] Question Answer
-- [ ] Maybe store geolocation of Farmer and Buyer to specify distance
+- [x] Maybe store geolocation of Farmer and Buyer to specify distance
 
 ## Points ignored for now
 
@@ -18,3 +18,4 @@ The Node server for the AgroAI platform.
 - No updation of listing after successful order
 - No order status for Farmer and Buyer (picked-up, confirmed)
 - No checking for user viewing his own questions in the feed
+- Sort listings on client side
