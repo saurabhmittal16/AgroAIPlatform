@@ -22,7 +22,7 @@ exports.addOrder = async (req, res) => {
 						const createdOrder = await Order.create({
 							listing: listingID,
 							buyer: buyerID,
-							seller: existingListing.owner,
+							farmer: existingListing.owner,
 							quantity: quantity
 						});
 
@@ -64,7 +64,7 @@ exports.getOrdersFarmer = async (req, res) => {
 		const foundFarmer = await Farmer.findOne({ _id: id });
 		if (foundFarmer) {
 			try {
-				const orders = await Order.find({ seller: id }, { seller: 0, updatedAt: 0 })
+				const orders = await Order.find({ farmer: id }, { farmer: 0, updatedAt: 0 })
 					.populate("buyer", {
 						name: 1,
 						address: 1,
@@ -76,6 +76,44 @@ exports.getOrdersFarmer = async (req, res) => {
 				console.log(err);
 				return res.code(500);
 			}
+		} else {
+			console.log("Invalid farmer credentials");
+			return res.code(500).send({
+				message: "Invalid farmer credentials"
+			});
+		}
+	} catch (err) {
+		console.log(err);
+		return res.code(500);
+	}
+};
+
+exports.getOrdersBuyer = async (req, res) => {
+	const { id } = req.decoded;
+	console.log(id);
+
+	try {
+		const foundBuyer = await Buyer.findOne({ _id: id });
+		console.log(foundBuyer);
+		if (foundBuyer) {
+			try {
+				const orders = await Order.find({ buyer: id }, { buyer: 0, updatedAt: 0 })
+					.populate("farmer", {
+						name: 1,
+						address: 1,
+						mobile: 1
+					})
+					.populate("listing", { owner: 0 });
+				return orders;
+			} catch (err) {
+				console.log(err);
+				return res.code(500);
+			}
+		} else {
+			console.log("Invalid farmer credentials");
+			return res.code(500).send({
+				message: "Invalid farmer credentials"
+			});
 		}
 	} catch (err) {
 		console.log(err);

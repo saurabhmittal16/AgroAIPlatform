@@ -15,7 +15,7 @@ const orderSchema = new mongoose.Schema(
 		},
 
 		// farmer ID: storing redundant data to optimize order searching
-		seller: {
+		farmer: {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "Farmer"
 		},

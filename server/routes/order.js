@@ -10,6 +10,11 @@ const routes = [
 		method: "GET",
 		url: "/api/order/farmer",
 		handler: controller.getOrdersFarmer
+	},
+	{
+		method: "GET",
+		url: "/api/order/buyer",
+		handler: controller.getOrdersBuyer
 	}
 ];
 
