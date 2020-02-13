@@ -6,6 +6,8 @@ const buyerSchema = new mongoose.Schema(
 		name: String,
 		password: String,
 		address: String,
+		lattitude: Number,
+		longitude: Number,
 
 		// primary key
 		mobile: {
