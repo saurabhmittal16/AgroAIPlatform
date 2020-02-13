@@ -56,3 +56,29 @@ exports.addOrder = async (req, res) => {
 		return res.code(500);
 	}
 };
+
+exports.getOrdersFarmer = async (req, res) => {
+	const { id } = req.decoded;
+
+	try {
+		const foundFarmer = await Farmer.findOne({ _id: id });
+		if (foundFarmer) {
+			try {
+				const orders = await Order.find({ seller: id }, { seller: 0, updatedAt: 0 })
+					.populate("buyer", {
+						name: 1,
+						address: 1,
+						mobile: 1
+					})
+					.populate("listing", { owner: 0 });
+				return orders;
+			} catch (err) {
+				console.log(err);
+				return res.code(500);
+			}
+		}
+	} catch (err) {
+		console.log(err);
+		return res.code(500);
+	}
+};

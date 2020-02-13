@@ -15,7 +15,7 @@ Content-Type: application/json
 
 {
 	"password": "password",
-	"mobile": "9191919191"
+	"mobile": "9090909090"
 }
 
 ### test buyer signup
@@ -67,3 +67,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtb2JpbGUiOiI5MDkwO
 	"listingID": "5e45500fca47ce4ac5fbb8af",
 	"quantity": 1
 }
+
+### test farmer orders
+GET http://localhost:8080/api/order/farmer
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtb2JpbGUiOiI5MDkwOTA5MDkwIiwiaWQiOiI1ZTQ1MjZiZjBjZTg2NzI2MWVmZTUzOWEiLCJpYXQiOjE1ODE2MDgwNDAsImV4cCI6MTU4MjIxMjg0MH0.CVuKmqNKpHwvQ5kSdGiHCsnFb-t2MediedmLE_miAAo
