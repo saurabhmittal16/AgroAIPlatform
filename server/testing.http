@@ -85,3 +85,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtb2JpbGUiOiI5MDkwO
 {
 	"question": "What is the capital of China?"
 }
+
+### test get question
+GET http://localhost:8080/api/question/5e4575722e8f187ab7fb6715
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtb2JpbGUiOiI5MDkwOTA5MDkwIiwiaWQiOiI1ZTQ1MjZiZjBjZTg2NzI2MWVmZTUzOWEiLCJpYXQiOjE1ODE2MDgwNDAsImV4cCI6MTU4MjIxMjg0MH0.CVuKmqNKpHwvQ5kSdGiHCsnFb-t2MediedmLE_miAAo
+
+### test add answer
+POST http://localhost:8080/api/question/5e4575722e8f187ab7fb6715/answer
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtb2JpbGUiOiI5MDkwOTA5MDkwIiwiaWQiOiI1ZTQ1MjZiZjBjZTg2NzI2MWVmZTUzOWEiLCJpYXQiOjE1ODE2MDgwNDAsImV4cCI6MTU4MjIxMjg0MH0.CVuKmqNKpHwvQ5kSdGiHCsnFb-t2MediedmLE_miAAo
+
+{
+	"answer": "Delhi is the capital of India"
+}

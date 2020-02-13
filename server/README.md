@@ -7,7 +7,8 @@ The Node server for the AgroAI platform.
 - [x] Feed for Buyer
 - [x] Order procedure
 - [x] Order listing for Farmer and Buyer
-- [ ] Question Answer
+- [x] Question Answer
+- [ ] Maybe store geolocation of Farmer and Buyer to specify distance
 
 ## Points ignored for now
 
