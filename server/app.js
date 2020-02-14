@@ -61,7 +61,7 @@ app.addHook("preHandler", (request, reply, next) => {
 });
 
 // welcome route for API
-app.get("/api/", async (request, res) => {
+app.get("/", async (request, res) => {
 	return {
 		message: "Welcome to AgroAI Platform"
 	};
