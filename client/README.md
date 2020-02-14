@@ -13,3 +13,7 @@ The client app for the AgroAI platform.
 -   [ ] Buyer: Feed of crops
 -   [ ] Buyer: Filters on feed of cropss
 -   [ ] Add code splitting
+
+## Points ignored for now
+
+-   No blocking of routes for unauthenticated and unauthorised users

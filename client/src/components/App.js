@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { withTranslation, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import { CssBaseline, IconButton } from "@material-ui/core";
 import LanguageIcon from "@material-ui/icons/Language";
 
@@ -14,7 +14,7 @@ const NotFound = () => <h1>Page not found</h1>;
 let isEng = true;
 
 const App = () => {
-	const { t, i18n } = useTranslation();
+	const { i18n } = useTranslation();
 
 	const switchLanguage = () => {
 		i18n.changeLanguage(isEng ? "hi" : "en");

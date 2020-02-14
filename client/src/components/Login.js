@@ -1,8 +1,23 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Avatar, Button, TextField, Link, Grid, Container, Typography } from "@material-ui/core";
+import {
+	Avatar,
+	Button,
+	TextField,
+	Link,
+	Grid,
+	Container,
+	Typography,
+	RadioGroup,
+	FormControlLabel,
+	Radio,
+	Snackbar,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+
+import { login } from "../utils/auth";
+import setAuthHeaders from "../utils/setAuthHeaders";
 
 const useStyles = makeStyles(theme => ({
 	paper: {
@@ -24,16 +39,27 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-const Login = () => {
+const Login = props => {
 	const [t] = useTranslation();
 
 	const classes = useStyles();
 	const [mobile, handleMobile] = useState("");
 	const [password, handlePassword] = useState("");
+	const [isFarmer, handleType] = useState("true");
+	const [error, setError] = useState(null);
 
-	const handleSubmit = e => {
+	const handleSubmit = async e => {
 		e.preventDefault();
-		console.log(mobile, password);
+		try {
+			const response = await login(mobile, password, isFarmer);
+			setAuthHeaders(response.data.token);
+			localStorage.setItem("token", response.data.token);
+			localStorage.setItem("isFarmer", isFarmer);
+			props.history.push(isFarmer ? "/farmer" : "/buyer");
+		} catch (err) {
+			console.log("Error", err.response.data.message);
+			setError(err.response.data.message);
+		}
 	};
 
 	return (
@@ -70,6 +96,17 @@ const Login = () => {
 						value={password}
 						onChange={e => handlePassword(e.target.value)}
 					/>
+					<RadioGroup
+						style={{ justifyContent: "center" }}
+						aria-label="position"
+						name="type"
+						value={isFarmer}
+						onChange={e => handleType(e.target.value)}
+						row
+					>
+						<FormControlLabel value="true" control={<Radio color="primary" />} label="Farmer" />
+						<FormControlLabel value="false" control={<Radio color="primary" />} label="Buyer" />
+					</RadioGroup>
 					<Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
 						Sign In
 					</Button>
@@ -87,6 +124,7 @@ const Login = () => {
 					</Grid>
 				</form>
 			</div>
+			<Snackbar open={!!error} onClose={() => setError(null)} autoHideDuration={2000} message={error} />
 		</Container>
 	);
 };

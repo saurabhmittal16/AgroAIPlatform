@@ -3,9 +3,13 @@ import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
 
 import App from "./components/App";
-import "./styles/main.scss";
+import setAuthHeader from "./utils/setAuthHeaders";
 
+import "./styles/main.scss";
 import "./i18n";
+
+let token = localStorage.getItem("token");
+setAuthHeader(token);
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
