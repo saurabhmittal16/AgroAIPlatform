@@ -5,7 +5,7 @@ The client app for the AgroAI platform.
 ## To-Do
 
 -   [x] Switch language
--   [ ] Login/Logout
+-   [x] Login/Logout
 -   [ ] Farmer: Add new crop
 -   [ ] Farmer: Ask question and answer
 -   [ ] Farmer: View orders

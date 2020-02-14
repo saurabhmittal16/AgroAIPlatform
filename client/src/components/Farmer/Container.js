@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import { mainListItems } from "./ListItems";
 import Router from "./Router";
+import setAuthHeaders from "../../utils/setAuthHeaders";
 
 const drawerWidth = 200;
 
@@ -88,9 +89,15 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-const MainContainer = () => {
+const MainContainer = props => {
 	const classes = useStyles();
 	const [open, setOpen] = useState(false);
+
+	function logout() {
+		setAuthHeaders();
+		localStorage.clear();
+		props.history.push("/login");
+	}
 
 	return (
 		<div className={classes.root}>
@@ -108,7 +115,7 @@ const MainContainer = () => {
 					<Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
 						AgroAI
 					</Typography>
-					<IconButton color="inherit">
+					<IconButton color="inherit" onClick={logout}>
 						<Badge color="secondary">
 							<ExitToApp />
 						</Badge>

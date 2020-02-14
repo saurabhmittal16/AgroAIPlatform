@@ -5,6 +5,7 @@ import Loading from "../Utils/Loading";
 
 const Dashboard = () => <h1>Dashboard</h1>;
 const NewCrop = () => <h1>Here is the listings</h1>;
+const NotFound = () => <h1>Page not found</h1>;
 
 class Router extends React.Component {
 	render() {
@@ -13,6 +14,7 @@ class Router extends React.Component {
 				<Switch>
 					<Route exact path="/buyer" component={Dashboard} />
 					<Route exact path="/buyer/feed" component={NewCrop} />
+					<Route path="/buyer/*" component={NotFound} />
 				</Switch>
 			</Suspense>
 		);
