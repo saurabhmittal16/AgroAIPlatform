@@ -55,20 +55,17 @@ exports.login = async (req, res) => {
 				);
 
 				return {
-					success: true,
 					message: "Login successful",
 					token: token
 				};
 			}
-			return {
-				sucess: false,
+			return res.code(400).send({
 				message: "Invalid password"
-			};
+			});
 		} else {
-			return {
-				sucess: false,
+			return res.code(404).send({
 				message: "No such buyer exists"
-			};
+			});
 		}
 	} catch (err) {
 		console.log(err);
