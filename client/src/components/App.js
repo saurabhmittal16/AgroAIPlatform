@@ -7,8 +7,8 @@ import LanguageIcon from "@material-ui/icons/Language";
 import Loading from "./Utils/Loading";
 
 const Login = lazy(() => import("./Login"));
-const Container = lazy(() => import("./Container"));
-const ForgotPassword = () => <h1>ForgotPassword</h1>;
+const FarmerContainer = lazy(() => import("./Farmer/Container"));
+const BuyerContainer = lazy(() => import("./Buyer/Container"));
 const NotFound = () => <h1>Page not found</h1>;
 
 let isEng = true;
@@ -27,8 +27,8 @@ const App = () => {
 			<BrowserRouter>
 				<Switch>
 					<Route exact path="/login" component={Login} />
-					<Route exact path="/forgot" component={ForgotPassword} />
-					<Route path="/" component={Container} />
+					<Route path="/farmer" component={FarmerContainer} />
+					<Route path="/buyer" component={BuyerContainer} />
 					<Route path="*" component={NotFound} />
 				</Switch>
 				<IconButton

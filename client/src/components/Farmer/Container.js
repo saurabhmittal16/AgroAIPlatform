@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import clsx from "clsx";
 import { Drawer, AppBar, Toolbar, List, Typography, Divider, IconButton, Badge, Container } from "@material-ui/core";
-import { Menu, Notifications, ChevronLeft } from "@material-ui/icons";
+import { Menu, ExitToApp, ChevronLeft } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { mainListItems } from "./ListItems";
@@ -110,7 +110,7 @@ const MainContainer = () => {
 					</Typography>
 					<IconButton color="inherit">
 						<Badge color="secondary">
-							<Notifications />
+							<ExitToApp />
 						</Badge>
 					</IconButton>
 				</Toolbar>
