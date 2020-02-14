@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Avatar, Button, TextField, Link, Grid, Container, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
@@ -24,6 +25,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Login = () => {
+	const [t] = useTranslation();
+
 	const classes = useStyles();
 	const [mobile, handleMobile] = useState("");
 	const [password, handlePassword] = useState("");
@@ -40,7 +43,7 @@ const Login = () => {
 					<LockOutlinedIcon />
 				</Avatar>
 				<Typography component="h1" variant="h5">
-					Sign in
+					{t("title")}
 				</Typography>
 				<form className={classes.form} onSubmit={handleSubmit}>
 					<TextField
@@ -67,13 +70,7 @@ const Login = () => {
 						value={password}
 						onChange={e => handlePassword(e.target.value)}
 					/>
-					<Button
-						type="submit"
-						fullWidth
-						variant="contained"
-						color="primary"
-						className={classes.submit}
-					>
+					<Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
 						Sign In
 					</Button>
 					<Grid container>
