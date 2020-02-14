@@ -18,7 +18,7 @@ const improveListing = obj => {
 };
 
 exports.addNew = async (req, res) => {
-	const { name, price, image, quantity } = req.body;
+	const { name, price, image, quantity, quality } = req.body;
 	const { id } = req.decoded;
 
 	try {
@@ -30,6 +30,7 @@ exports.addNew = async (req, res) => {
 				price,
 				image,
 				quantity,
+				quality,
 				owner: id
 			});
 

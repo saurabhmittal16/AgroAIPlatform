@@ -8,6 +8,9 @@ const listingSchema = new mongoose.Schema(
 		// price of crop per kg
 		price: Number,
 
+		// quality of produce predicted by the ML model
+		quality: Number,
+
 		// quantity of produce
 		quantity: Number,
 

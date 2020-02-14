@@ -47,9 +47,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtb2JpbGUiOiI5MTkxO
 
 {
 	"name": "Wheat",
-	"price": 256,
-	"image": "/upload/baed.jpg",
-	"quantity": 10
+	"price": 212,
+	"image": "/upload/byav.jpg",
+	"quantity": 22,
+	"quality": 83.32
 }
 
 ### get listings
