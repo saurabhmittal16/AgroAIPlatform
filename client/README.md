@@ -4,7 +4,7 @@ The client app for the AgroAI platform.
 
 ## To-Do
 
--   [ ] Switch language
+-   [x] Switch language
 -   [ ] Login/Logout
 -   [ ] Farmer: Add new crop
 -   [ ] Farmer: Ask question and answer
