@@ -1,10 +1,10 @@
-import React, { Suspense } from "react";
+import React, { Suspense, lazy } from "react";
 import { Switch, Route } from "react-router-dom";
 
 import Loading from "../Utils/Loading";
 
 const Dashboard = () => <h1>Dashboard</h1>;
-const NewCrop = () => <h1>Upload New Crop</h1>;
+const NewCrop = lazy(() => import("./AddCrop"));
 const NotFound = () => <h1>Page not found</h1>;
 
 class Router extends React.Component {
