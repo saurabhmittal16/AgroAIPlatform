@@ -8,7 +8,7 @@ const useStyles = makeStyles({
 	root: {
 		width: "100%",
 		marginBottom: "1vh",
-		height: "20vh",
+		height: "40vh",
 	},
 	title: {
 		fontSize: 28,
@@ -33,43 +33,23 @@ const Dashboard = props => {
 				flexDirection: "column",
 			}}
 		>
-			<Card className={classes.root} variant="outlined" onClick={() => redirect("/farmer/new")}>
+			<Card className={classes.root} variant="outlined" onClick={() => redirect("/buyer/feed")}>
 				<CardContent>
 					<Typography className={classes.title} component="h1">
-						New Crop
+						View Feed
 					</Typography>
 					<Typography className={classes.body} component="p">
-						Add a new crop which can be bough by buyers
+						View crops added by farmer
 					</Typography>
 				</CardContent>
 			</Card>
-			<Card className={classes.root} variant="outlined" onClick={() => redirect("/farmer/listing")}>
+			<Card className={classes.root} variant="outlined" onClick={() => redirect("/buyer/order")}>
 				<CardContent>
 					<Typography className={classes.title} component="h1">
-						Listings
+						View Orders
 					</Typography>
 					<Typography className={classes.body} component="p">
-						View the listings you have added
-					</Typography>
-				</CardContent>
-			</Card>
-			<Card className={classes.root} variant="outlined" onClick={() => redirect("/farmer/order")}>
-				<CardContent>
-					<Typography className={classes.title} component="h1">
-						Orders
-					</Typography>
-					<Typography className={classes.body} component="p">
-						View the orders placed
-					</Typography>
-				</CardContent>
-			</Card>
-			<Card className={classes.root} variant="outlined" onClick={() => redirect("/farmer/question")}>
-				<CardContent>
-					<Typography className={classes.title} component="h1">
-						Q/A
-					</Typography>
-					<Typography className={classes.body} component="p">
-						View questions added by others and answer
+						View the orders you have placed
 					</Typography>
 				</CardContent>
 			</Card>
