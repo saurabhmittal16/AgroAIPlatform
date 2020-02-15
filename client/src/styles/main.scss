@@ -9,3 +9,13 @@
 		font-size: 100px;
 	}
 }
+
+.new {
+	&__title {
+		margin-bottom: 5px !important;
+	}
+
+	&__main {
+		margin-bottom: 10px !important;
+	}
+}

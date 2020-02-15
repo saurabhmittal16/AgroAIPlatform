@@ -34,7 +34,7 @@ const App = () => {
 						path="/"
 						component={() => {
 							if (token) {
-								if (isFarmer == "true") {
+								if (isFarmer === "true") {
 									return <Redirect to="/farmer" />;
 								} else {
 									return <Redirect to="/buyer" />;

@@ -16,7 +16,7 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 
-import { login } from "../utils/auth";
+import { login } from "../utils/network";
 import setAuthHeaders from "../utils/setAuthHeaders";
 
 const useStyles = makeStyles(theme => ({

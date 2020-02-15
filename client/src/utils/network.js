@@ -12,3 +12,13 @@ export async function login(mobile, password, isFarmer) {
 
 	return response;
 }
+
+export function uploadImage(file) {
+	let url = config.model_url;
+	url = url + "/";
+
+	let formData = new FormData();
+	formData.append("file", file);
+
+	return axios.post(url, formData);
+}
