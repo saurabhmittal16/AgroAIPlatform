@@ -1,30 +1,14 @@
 import React from "react";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import PeopleIcon from "@material-ui/icons/People";
 
+import ListItemLink from "../Utils/ListItemLink";
+
 export const mainListItems = (
 	<div>
-		<ListItem button>
-			<ListItemIcon>
-				<DashboardIcon />
-			</ListItemIcon>
-			<ListItemText primary="Home" />
-		</ListItem>
-		<ListItem button>
-			<ListItemIcon>
-				<ShoppingCartIcon />
-			</ListItemIcon>
-			<ListItemText primary="New Crop" />
-		</ListItem>
-		<ListItem button>
-			<ListItemIcon>
-				<PeopleIcon />
-			</ListItemIcon>
-			<ListItemText primary="Q/A" />
-		</ListItem>
+		<ListItemLink primary="Home" icon={<DashboardIcon />} to="/farmer" />
+		<ListItemLink primary="New Crop" icon={<ShoppingCartIcon />} to="/farmer/new" />
+		<ListItemLink primary="Q/A" icon={<PeopleIcon />} to="/farmer/question" />
 	</div>
 );
