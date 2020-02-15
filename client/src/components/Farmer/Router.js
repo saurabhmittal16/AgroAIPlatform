@@ -3,8 +3,11 @@ import { Switch, Route } from "react-router-dom";
 
 import Loading from "../Utils/Loading";
 
-const Dashboard = () => <h1>Dashboard</h1>;
+const Dashboard = lazy(() => import("./Dashboard"));
 const NewCrop = lazy(() => import("./AddCrop"));
+const Listing = () => <h1>View your listings</h1>;
+const Order = () => <h1>View your orders</h1>;
+const Question = () => <h1>Question Answer</h1>;
 const NotFound = () => <h1>Page not found</h1>;
 
 class Router extends React.Component {
@@ -14,6 +17,9 @@ class Router extends React.Component {
 				<Switch>
 					<Route exact path="/farmer" component={Dashboard} />
 					<Route exact path="/farmer/new" component={NewCrop} />
+					<Route exact path="/farmer/listing" component={Listing} />
+					<Route exact path="/farmer/order" component={Order} />
+					<Route exact path="/farmer/question" component={Question} />
 					<Route path="/farmer/*" component={NotFound} />
 				</Switch>
 			</Suspense>
