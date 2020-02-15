@@ -6,7 +6,7 @@ The client app for the AgroAI platform.
 
 -   [x] Switch language
 -   [x] Login/Logout
--   [ ] Farmer: Add new crop
+-   [x] Farmer: Add new crop
 -   [ ] Farmer: Ask question and answer
 -   [ ] Farmer: View orders
 -   [ ] Buyer: View orders

@@ -1,11 +1,11 @@
 import axios from "axios";
 import config from "../config";
 
-export async function login(mobile, password, isFarmer) {
+export function login(mobile, password, isFarmer) {
 	let url = config.server_url;
 	url = url + "/api/auth" + (isFarmer === "true" ? "/farmer/login" : "/buyer/login");
 
-	const response = await axios.post(url, {
+	const response = axios.post(url, {
 		mobile: mobile,
 		password: password,
 	});
@@ -21,4 +21,19 @@ export function uploadImage(file) {
 	formData.append("file", file);
 
 	return axios.post(url, formData);
+}
+
+export function addListing(name, quantity, price, quality, image) {
+	let url = config.server_url;
+	url = url + "/api/listing";
+
+	const response = axios.post(url, {
+		name,
+		price,
+		image,
+		quantity,
+		quality,
+	});
+
+	return response;
 }

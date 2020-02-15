@@ -6,29 +6,32 @@ import {
 	InputAdornment,
 	FormControl,
 	CircularProgress,
+	Backdrop,
 	Typography,
+	Snackbar,
 } from "@material-ui/core";
-import { uploadImage } from "../../utils/network";
+import { uploadImage, addListing } from "../../utils/network";
 import Dropzone from "react-dropzone";
+import config from "../../config";
 
 // Util function to round number to 1 decimal place
 const round = arg => Math.round(arg * 10) / 10;
 
-const AddCrop = () => {
+const AddCrop = props => {
 	const [name, setName] = useState("");
-	const [weight, setWeight] = useState(0);
+	const [quantity, setquantity] = useState(0);
 	const [price, setPrice] = useState(0);
 	const [showPrice, setShowPrice] = useState(false);
 	const [showLoader, setShowLoader] = useState(false);
-	let metaData = {};
+	const [metadata, setMetadata] = useState(null);
+	const [error, setError] = useState(null);
 
 	async function handleUpload(file) {
 		try {
 			setShowLoader(true);
 			const response = await uploadImage(file);
-			metaData = response.data;
-			// console.log(metaData);
-			setPrice(round(metaData.price));
+			setMetadata(response.data);
+			setPrice(round(response.data.price));
 			setShowPrice(true);
 		} catch (err) {
 			console.log(err);
@@ -37,11 +40,23 @@ const AddCrop = () => {
 		}
 	}
 
+	async function handleSubmit(e) {
+		e.preventDefault();
+		try {
+			const response = await addListing(name, quantity, price, metadata.quality, metadata.url);
+			console.log(response.data.message);
+			props.history.push("/farmer");
+		} catch (err) {
+			console.log("Error", err.response.data.message);
+			setError(err.response.data.message);
+		}
+	}
+
 	return (
 		<div>
 			<h1>Add New Crop</h1>
 
-			<form noValidate autoComplete="off">
+			<form noValidate autoComplete="off" onSubmit={handleSubmit}>
 				<Typography style={{ marginBottom: "10px" }}>1) Enter the name of the crop</Typography>
 				<FormControl fullWidth variant="outlined" style={{ marginBottom: "25px" }}>
 					<InputLabel htmlFor="outlined-text">Name</InputLabel>
@@ -59,8 +74,8 @@ const AddCrop = () => {
 					<OutlinedInput
 						id="outlined-text"
 						type="number"
-						value={weight}
-						onChange={e => setWeight(e.target.value)}
+						value={quantity}
+						onChange={e => setquantity(e.target.value)}
 						endAdornment={<InputAdornment position="end">Kg</InputAdornment>}
 						labelWidth={60}
 					/>
@@ -90,8 +105,17 @@ const AddCrop = () => {
 									marginBottom: "10px",
 								}}
 							>
-								{showLoader && <CircularProgress />}
+								<Backdrop open={showLoader} style={{ zIndex: 10000 }}>
+									<CircularProgress />
+								</Backdrop>
 							</div>
+							{showPrice && (
+								<img
+									src={config.model_url + metadata.url}
+									style={{ width: "100%" }}
+									alt="Uploaded crop"
+								/>
+							)}
 						</section>
 					)}
 				</Dropzone>
@@ -119,11 +143,12 @@ const AddCrop = () => {
 					fullWidth
 					variant="contained"
 					color="secondary"
-					disabled={!showPrice || name === "" || weight === 0 || price === 0}
+					disabled={!showPrice || name === "" || quantity === 0 || price === 0}
 				>
 					Submit
 				</Button>
 			</form>
+			<Snackbar open={!!error} onClose={() => setError(null)} autoHideDuration={2000} message={error} />
 		</div>
 	);
 };

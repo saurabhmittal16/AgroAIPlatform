@@ -9,6 +9,7 @@ The Node server for the AgroAI platform.
 - [x] Order listing for Farmer and Buyer
 - [x] Question Answer
 - [x] Maybe store geolocation of Farmer and Buyer to specify distance
+- [ ] Return added date with listing and populate farmer geolocation
 
 ## Points ignored for now
 
