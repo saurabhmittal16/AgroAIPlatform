@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { CssBaseline, IconButton } from "@material-ui/core";
 import LanguageIcon from "@material-ui/icons/Language";
@@ -16,6 +16,9 @@ let isEng = true;
 const App = () => {
 	const { i18n } = useTranslation();
 
+	const isFarmer = localStorage.getItem("isFarmer");
+	const token = localStorage.getItem("token");
+
 	const switchLanguage = () => {
 		i18n.changeLanguage(isEng ? "hi" : "en");
 		isEng = !isEng;
@@ -26,6 +29,21 @@ const App = () => {
 			<CssBaseline />
 			<BrowserRouter>
 				<Switch>
+					<Route
+						exact
+						path="/"
+						component={() => {
+							if (token) {
+								if (isFarmer == "true") {
+									return <Redirect to="/farmer" />;
+								} else {
+									return <Redirect to="/buyer" />;
+								}
+							} else {
+								return <Redirect to="/login" />;
+							}
+						}}
+					/>
 					<Route exact path="/login" component={Login} />
 					<Route path="/farmer" component={FarmerContainer} />
 					<Route path="/buyer" component={BuyerContainer} />
