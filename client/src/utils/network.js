@@ -58,3 +58,10 @@ export function getBuyerOrders() {
 	const response = axios.get(url);
 	return response;
 }
+
+export function getQuestionFeed() {
+	let url = config.server_url + "/api/question";
+
+	const response = axios.get(url);
+	return response;
+}

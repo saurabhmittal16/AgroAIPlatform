@@ -7,7 +7,7 @@ const Dashboard = lazy(() => import("./Dashboard"));
 const NewCrop = lazy(() => import("./AddCrop"));
 const Listing = lazy(() => import("./Listing"));
 const Order = lazy(() => import("./Order"));
-const Question = () => <h1>Question Answer</h1>;
+const Question = lazy(() => import("./QuestionFeed"));
 const NotFound = () => <h1>Page not found</h1>;
 
 class Router extends React.Component {
