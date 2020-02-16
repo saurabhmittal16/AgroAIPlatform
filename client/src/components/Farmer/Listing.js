@@ -56,7 +56,7 @@ const Listing = () => {
 		<div>
 			<h1>My Listing</h1>
 			{data.length === 0 ? (
-				<Loading />
+				<Loading style={{ height: "60vh" }} />
 			) : (
 				<div
 					style={{
@@ -108,7 +108,7 @@ const Listing = () => {
 					>
 						<Fade in={open}>
 							<div className={classes.paper}>
-								<h2 style={{ marginBottom: 5, marginTop: 0 }}>{data[index].name}</h2>
+								<h2 style={{ marginBottom: 5, marginTop: 8 }}>{data[index].name}</h2>
 								<ul style={{ marginTop: 2, marginBottom: 0, paddingLeft: 20 }}>
 									<li>
 										<strong>Price:</strong> ₹{data[index].price}
