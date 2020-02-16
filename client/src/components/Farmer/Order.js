@@ -86,10 +86,10 @@ const Order = () => {
 											<strong>Bought Crop: </strong>
 											{order.listing.name}
 										</span>
-										<span>
+										{/* <span>
 											<strong>Bought Quantity: </strong>
 											{order.quantity} kg
-										</span>
+										</span> */}
 										<span>
 											<strong>Buyer Name: </strong>
 											{order.buyer.name}
@@ -98,13 +98,19 @@ const Order = () => {
 											<strong>Buyer Mobile: </strong>
 											{order.buyer.mobile}
 										</span>
-										<span>
+										{/* <span>
 											<strong>Buyer Address: </strong>
 											{order.buyer.address}
 										</span>
 										<span>
 											<strong>Amount Paid: </strong>₹ {order.quantity * order.listing.price}
 										</span>
+										<span>
+											<strong>Received On: </strong>{" "}
+											{Date(order.createdAt)
+												.toString()
+												.substr(0, 15)}
+										</span> */}
 									</Typography>
 								</CardContent>
 							</Card>
@@ -146,6 +152,12 @@ const Order = () => {
 									<li>
 										<strong>Amount Paid:</strong> ₹{" "}
 										{data[index].quantity * data[index].listing.price}
+									</li>
+									<li>
+										<strong>Received On: </strong>
+										{Date(data[index].createdAt)
+											.toString()
+											.substr(0, 15)}
 									</li>
 								</ul>
 							</div>
