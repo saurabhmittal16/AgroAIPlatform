@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { getQuestionFeed } from "../../utils/network";
+import React, { useEffect, useState } from "react";
+import { getQuestionAnswers } from "../../utils/network";
 import { makeStyles } from "@material-ui/core/styles";
 import { Card, CardContent, Typography } from "@material-ui/core";
 import Loading from "../Utils/Loading";
@@ -11,36 +11,31 @@ const useStyles = makeStyles(theme => ({
 		// height: "20vh",
 	},
 	title: {
-		fontSize: 18,
+		fontSize: 16,
 		marginBottom: 5,
-		fontWeight: "bold",
 	},
 	body: {
-		fontSize: 16,
+		fontSize: 14,
 		marginBottom: 10,
 		float: "right",
 	},
 }));
 
-const Order = props => {
+const QuestionItem = props => {
+	const question = props.location.state.question;
+	const id = props.match.params.id;
+
 	const classes = useStyles();
-	const [data, setData] = useState([]);
+	const [data, setData] = useState(null);
 
 	async function fetchData() {
 		try {
-			const response = await getQuestionFeed();
-			// console.log(response.data);
-			setData(response.data);
+			const response = await getQuestionAnswers(id);
+			console.log(response.data.answers);
+			setData(response.data.answers);
 		} catch (err) {
 			console.log(err);
 		}
-	}
-
-	function handleClick(id, question) {
-		props.history.push({
-			pathname: `/farmer/question/${id}`,
-			state: { question: question },
-		});
 	}
 
 	useEffect(() => {
@@ -49,8 +44,8 @@ const Order = props => {
 
 	return (
 		<div>
-			<h1>Questions</h1>
-			{data.length === 0 ? (
+			<h1>{question}</h1>
+			{data === null ? (
 				<Loading style={{ height: "60vh" }} />
 			) : (
 				<div
@@ -59,16 +54,12 @@ const Order = props => {
 						flexDirection: "column",
 					}}
 				>
+					<h2>Answers: </h2>
 					{data.map((item, index) => (
-						<Card
-							className={classes.root}
-							variant="outlined"
-							key={`question_${index}`}
-							onClick={() => handleClick(item._id, item.question)}
-						>
+						<Card className={classes.root} variant="outlined" key={`answer_${index}`}>
 							<CardContent>
 								<Typography className={classes.title} component="h1">
-									{item.question}
+									{item.answer}
 								</Typography>
 								<Typography className={classes.body}>
 									<span>
@@ -84,4 +75,4 @@ const Order = props => {
 	);
 };
 
-export default Order;
+export default QuestionItem;

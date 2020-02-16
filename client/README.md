@@ -19,3 +19,4 @@ The client app for the AgroAI platform.
 ## Points ignored for now
 
 -   No blocking of routes for unauthenticated and unauthorised users
+-   No appropriate display when no orders/listings/questions/answers

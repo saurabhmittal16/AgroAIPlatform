@@ -65,3 +65,10 @@ export function getQuestionFeed() {
 	const response = axios.get(url);
 	return response;
 }
+
+export function getQuestionAnswers(id) {
+	let url = config.server_url + "/api/question/" + id;
+
+	const response = axios.get(url);
+	return response;
+}
