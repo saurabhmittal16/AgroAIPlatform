@@ -37,3 +37,10 @@ export function addListing(name, quantity, price, quality, image) {
 
 	return response;
 }
+
+export function getFarmerListings() {
+	let url = config.server_url + "/api/listing/farmer";
+
+	const response = axios.get(url);
+	return response;
+}
