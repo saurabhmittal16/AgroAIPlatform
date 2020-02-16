@@ -44,3 +44,10 @@ export function getFarmerListings() {
 	const response = axios.get(url);
 	return response;
 }
+
+export function getFarmerOrders() {
+	let url = config.server_url + "/api/order/farmer";
+
+	const response = axios.get(url);
+	return response;
+}

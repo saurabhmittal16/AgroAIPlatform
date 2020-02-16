@@ -6,7 +6,7 @@ import Loading from "../Utils/Loading";
 const Dashboard = lazy(() => import("./Dashboard"));
 const NewCrop = lazy(() => import("./AddCrop"));
 const Listing = lazy(() => import("./Listing"));
-const Order = () => <h1>View your orders</h1>;
+const Order = lazy(() => import("./Order"));
 const Question = () => <h1>Question Answer</h1>;
 const NotFound = () => <h1>Page not found</h1>;
 

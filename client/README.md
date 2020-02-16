@@ -8,8 +8,9 @@ The client app for the AgroAI platform.
 -   [x] Login/Logout
 -   [x] Farmer: Add new crop
 -   [x] Farmer: View listings
+-   [x] Farmer: View orders
 -   [ ] Farmer: Ask question and answer
--   [ ] Farmer: View orders
+-   [ ] Farmer: Add distance betweeen farmer and buyer
 -   [ ] Buyer: View orders
 -   [ ] Buyer: Feed of crops
 -   [ ] Buyer: Filters on feed of cropss
