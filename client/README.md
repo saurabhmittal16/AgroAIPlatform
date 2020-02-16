@@ -10,7 +10,7 @@ The client app for the AgroAI platform.
 -   [x] Farmer: View listings
 -   [x] Farmer: View orders
 -   [x] Buyer: View orders
--   [ ] Farmer: Ask question and answer
+-   [x] Farmer: Ask question and answer
 -   [ ] Farmer: Add distance betweeen farmer and buyer
 -   [ ] Buyer: Feed of crops
 -   [ ] Buyer: Filters on feed of cropss

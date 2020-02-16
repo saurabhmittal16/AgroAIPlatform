@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { getQuestionAnswers } from "../../utils/network";
 import { makeStyles } from "@material-ui/core/styles";
-import { Card, CardContent, Typography } from "@material-ui/core";
+import { Card, CardContent, Typography, TextField, InputAdornment, IconButton } from "@material-ui/core";
+import SendIcon from "@material-ui/icons/Send";
+import { getQuestionAnswers, addAnswer } from "../../utils/network";
 import Loading from "../Utils/Loading";
 
 const useStyles = makeStyles(theme => ({
 	root: {
 		width: "100%",
 		marginBottom: "1vh",
-		// height: "20vh",
 	},
 	title: {
 		fontSize: 16,
@@ -27,24 +27,57 @@ const QuestionItem = props => {
 
 	const classes = useStyles();
 	const [data, setData] = useState(null);
+	const [answer, setAnswer] = useState("");
 
-	async function fetchData() {
+	// used to re-fetch answers from the server
+	const [changed, setChanged] = useState(0);
+
+	async function handleSubmit() {
+		// console.log(id, answer);
 		try {
-			const response = await getQuestionAnswers(id);
-			console.log(response.data.answers);
-			setData(response.data.answers);
+			const response = await addAnswer(id, answer);
+			setAnswer("");
+			setChanged(changed + 1);
 		} catch (err) {
 			console.log(err);
 		}
 	}
 
 	useEffect(() => {
+		async function fetchData() {
+			try {
+				const response = await getQuestionAnswers(id);
+				// console.log(response.data.answers);
+				setData(response.data.answers);
+			} catch (err) {
+				console.log(err);
+			}
+		}
+
 		fetchData();
-	}, []);
+	}, [id, changed]);
 
 	return (
 		<div>
 			<h1>{question}</h1>
+			<div>
+				<h2 style={{ marginBottom: 0 }}>Add Answer: </h2>
+				<TextField
+					value={answer}
+					onChange={e => setAnswer(e.target.value)}
+					style={{ width: "100%", background: "white", marginTop: "10px" }}
+					variant="outlined"
+					InputProps={{
+						endAdornment: (
+							<InputAdornment position="end">
+								<IconButton onClick={handleSubmit}>
+									<SendIcon />
+								</IconButton>
+							</InputAdornment>
+						),
+					}}
+				/>
+			</div>
 			{data === null ? (
 				<Loading style={{ height: "60vh" }} />
 			) : (

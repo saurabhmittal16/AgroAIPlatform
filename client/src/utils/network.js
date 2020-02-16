@@ -72,3 +72,13 @@ export function getQuestionAnswers(id) {
 	const response = axios.get(url);
 	return response;
 }
+
+export function addAnswer(id, answer) {
+	let url = config.server_url + "/api/question/" + id + "/answer";
+
+	const response = axios.post(url, {
+		answer: answer,
+	});
+
+	return response;
+}
