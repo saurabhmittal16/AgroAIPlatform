@@ -78,6 +78,28 @@ exports.getListings = async (req, res) => {
 	}
 };
 
+exports.getFarmerListings = async (req, res) => {
+	const { id } = req.decoded;
+
+	try {
+		const foundFarmer = await Farmer.exists({ _id: id });
+
+		if (foundFarmer) {
+			// get all listings added by that farmer
+			const listings = await Listing.find({ owner: id }, { owner: 0 });
+			return listings;
+		} else {
+			console.log("Invalid farmer credentials");
+			return res.code(500).send({
+				message: "Invalid farmer credentials"
+			});
+		}
+	} catch (err) {
+		console.log("Cound not find farmer", err);
+		return res.code(500);
+	}
+};
+
 exports.getSingleListing = async (req, res) => {
 	const { id } = req.params;
 
