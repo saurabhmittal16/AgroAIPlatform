@@ -51,3 +51,10 @@ export function getFarmerOrders() {
 	const response = axios.get(url);
 	return response;
 }
+
+export function getBuyerOrders() {
+	let url = config.server_url + "/api/order/buyer";
+
+	const response = axios.get(url);
+	return response;
+}

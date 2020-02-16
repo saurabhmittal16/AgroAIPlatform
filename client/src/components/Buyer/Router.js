@@ -4,8 +4,8 @@ import { Switch, Route } from "react-router-dom";
 import Loading from "../Utils/Loading";
 
 const Dashboard = lazy(() => import("./Dashboard"));
+const Order = lazy(() => import("./Order"));
 const Feed = () => <h1>Here are the listings</h1>;
-const Order = () => <h1>Here are the orders you have placed</h1>;
 const NotFound = () => <h1>Page not found</h1>;
 
 class Router extends React.Component {

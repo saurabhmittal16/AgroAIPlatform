@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getFarmerOrders } from "../../utils/network";
+import { getBuyerOrders } from "../../utils/network";
 import { makeStyles } from "@material-ui/core/styles";
 import { Card, CardContent, Typography, Modal, Backdrop, Fade } from "@material-ui/core";
 import Loading from "../Utils/Loading";
@@ -40,7 +40,7 @@ const Order = () => {
 
 	async function fetchData() {
 		try {
-			const response = await getFarmerOrders();
+			const response = await getBuyerOrders();
 			// console.log(response.data);
 			setData(response.data);
 		} catch (err) {
@@ -85,31 +85,14 @@ const Order = () => {
 											<strong>Bought Crop: </strong>
 											{order.listing.name}
 										</span>
-										{/* <span>
-											<strong>Bought Quantity: </strong>
-											{order.quantity} kg
-										</span> */}
 										<span>
-											<strong>Buyer Name: </strong>
-											{order.buyer.name}
+											<strong>Farmer Name: </strong>
+											{order.farmer.name}
 										</span>
 										<span>
-											<strong>Buyer Mobile: </strong>
-											{order.buyer.mobile}
+											<strong>Farmer Mobile: </strong>
+											{order.farmer.mobile}
 										</span>
-										{/* <span>
-											<strong>Buyer Address: </strong>
-											{order.buyer.address}
-										</span>
-										<span>
-											<strong>Amount Paid: </strong>₹ {order.quantity * order.listing.price}
-										</span>
-										<span>
-											<strong>Received On: </strong>{" "}
-											{Date(order.createdAt)
-												.toString()
-												.substr(0, 15)}
-										</span> */}
 									</Typography>
 								</CardContent>
 							</Card>
@@ -140,20 +123,23 @@ const Order = () => {
 										<strong>Bought Quantity:</strong> {data[index].quantity} kg
 									</li>
 									<li>
-										<strong>Buyer Name:</strong> {data[index].buyer.name}
+										<strong>Crop Price:</strong> {data[index].listing.price} kg
 									</li>
 									<li>
-										<strong>Buyer Mobile:</strong> {data[index].buyer.mobile}
+										<strong>Buyer Name:</strong> {data[index].farmer.name}
 									</li>
 									<li>
-										<strong>Buyer Address:</strong> {data[index].buyer.address}
+										<strong>Buyer Mobile:</strong> {data[index].farmer.mobile}
+									</li>
+									<li>
+										<strong>Buyer Address:</strong> {data[index].farmer.address}
 									</li>
 									<li>
 										<strong>Amount Paid:</strong> ₹{" "}
 										{data[index].quantity * data[index].listing.price}
 									</li>
 									<li>
-										<strong>Received On: </strong>
+										<strong>Placed On: </strong>
 										{Date(data[index].createdAt)
 											.toString()
 											.substr(0, 15)}
