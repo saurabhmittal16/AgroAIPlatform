@@ -36,8 +36,8 @@ const QuestionItem = props => {
 		// console.log(id, answer);
 		try {
 			const response = await addAnswer(id, answer);
-			setAnswer("");
 			setChanged(changed + 1);
+			setData(null);
 		} catch (err) {
 			console.log(err);
 		}
@@ -49,6 +49,7 @@ const QuestionItem = props => {
 				const response = await getQuestionAnswers(id);
 				// console.log(response.data.answers);
 				setData(response.data.answers);
+				setAnswer("");
 			} catch (err) {
 				console.log(err);
 			}
