@@ -77,7 +77,7 @@ exports.getOrdersFarmer = async (req, res) => {
 
 exports.getOrdersBuyer = async (req, res) => {
 	const { id } = req.decoded;
-	console.log(id);
+	// console.log(id);
 
 	try {
 		const foundBuyer = await Buyer.exists({ _id: id });
