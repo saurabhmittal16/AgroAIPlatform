@@ -57,6 +57,8 @@ exports.login = async (req, res) => {
 
 				return {
 					message: "Login successful",
+					lattitude: foundFarmer.lattitude,
+					longitude: foundFarmer.longitude,
 					token: token
 				};
 			}

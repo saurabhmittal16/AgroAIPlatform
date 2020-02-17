@@ -56,7 +56,10 @@ exports.getOrdersFarmer = async (req, res) => {
 				.populate("buyer", {
 					name: 1,
 					address: 1,
-					mobile: 1
+					mobile: 1,
+					address: 1,
+					lattitude: 1,
+					longitude: 1
 				})
 				.populate("listing", { owner: 0 });
 			return orders;
@@ -83,7 +86,10 @@ exports.getOrdersBuyer = async (req, res) => {
 				.populate("farmer", {
 					name: 1,
 					address: 1,
-					mobile: 1
+					mobile: 1,
+					farmer: 1,
+					lattitude: 1,
+					longitude: 1
 				})
 				.populate("listing", { owner: 0 });
 			return orders;

@@ -25,10 +25,12 @@ POST http://localhost:8080/api/auth/buyer/signup
 Content-Type: application/json
 
 {
-	"name": "Laxman",
+	"name": "Raavan",
 	"password": "password",
-	"mobile": "9090909091",
-	"address": "221B, Baker Street, New Delhi"
+	"mobile": "9393939393",
+	"address": "221B, Baker Street, Hyderabad",
+	"lattitude": 38.6204312,
+	"longitude": 70.0679318
 }
 
 ### test buyer login

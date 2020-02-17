@@ -13,7 +13,9 @@ const improveListing = obj => {
 		quantity: obj.quantity,
 		farmerID: ownerData._id,
 		farmerName: ownerData.name,
-		farmerAddress: ownerData.address
+		farmerAddress: ownerData.address,
+		farmerLattitude: ownerData.lattitude,
+		farmerLongitude: ownerData.longitude
 	};
 };
 
@@ -63,7 +65,13 @@ exports.getListings = async (req, res) => {
 
 		if (foundBuyer) {
 			// get owner data from listing - name, id and address
-			const listings = await Listing.find({}).populate("owner", { _id: 1, name: 1, address: 1 });
+			const listings = await Listing.find({}).populate("owner", {
+				_id: 1,
+				name: 1,
+				address: 1,
+				lattitude: 1,
+				longitude: 1
+			});
 
 			return listings.map(item => improveListing(item));
 		} else {
@@ -107,7 +115,13 @@ exports.getSingleListing = async (req, res) => {
 		return res.code(404);
 	} else {
 		try {
-			const foundListing = await Listing.findById(id).populate("owner", { _id: 1, name: 1, address: 1 });
+			const foundListing = await Listing.findById(id).populate("owner", {
+				_id: 1,
+				name: 1,
+				address: 1,
+				lattitude: 1,
+				longitude: 1
+			});
 			return improveListing(foundListing);
 		} catch (err) {
 			console.log("Could not find listing", err);
