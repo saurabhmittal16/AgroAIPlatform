@@ -9,6 +9,7 @@ const Listing = lazy(() => import("./Listing"));
 const Order = lazy(() => import("./Order"));
 const Question = lazy(() => import("./QuestionFeed"));
 const QuestionItem = lazy(() => import("./QuestionItem"));
+const NewQuestion = lazy(() => import("./AddQuestion"));
 const NotFound = () => <h1>Page not found</h1>;
 
 class Router extends React.Component {
@@ -21,6 +22,7 @@ class Router extends React.Component {
 					<Route exact path="/farmer/listing" component={Listing} />
 					<Route exact path="/farmer/order" component={Order} />
 					<Route exact path="/farmer/question" component={Question} />
+					<Route exact path="/farmer/question/add" component={NewQuestion} />
 					<Route exact path="/farmer/question/:id" component={QuestionItem} />
 					<Route path="/farmer/*" component={NotFound} />
 				</Switch>

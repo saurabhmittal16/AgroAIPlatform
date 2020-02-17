@@ -23,3 +23,4 @@ The client app for the AgroAI platform.
 -   No blocking of routes for unauthenticated and unauthorised users
 -   No appropriate display when no orders/listings/questions/answers
 -   Store data about signed-in user in local storage
+-   No placing order

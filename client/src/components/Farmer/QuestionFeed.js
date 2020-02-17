@@ -1,10 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { getQuestionFeed } from "../../utils/network";
 import { makeStyles } from "@material-ui/core/styles";
-import { Card, CardContent, Typography } from "@material-ui/core";
+import { Card, CardContent, Typography, IconButton } from "@material-ui/core";
+import AddIcon from "@material-ui/icons/AddBox";
 import Loading from "../Utils/Loading";
 
 const useStyles = makeStyles(theme => ({
+	header: {
+		display: "flex",
+		justifyContent: "space-between",
+		marginTop: "10px",
+		marginBottom: "10px",
+		paddingLeft: "6px",
+	},
+	head: {
+		fontSize: "28px",
+		fontWeight: "bold",
+		paddingTop: "6px",
+	},
 	root: {
 		width: "100%",
 		marginBottom: "1vh",
@@ -43,13 +56,21 @@ const Order = props => {
 		});
 	}
 
+	const handleAdd = () => props.history.push("/farmer/question/add");
+
 	useEffect(() => {
 		fetchData();
 	}, []);
 
 	return (
 		<div>
-			<h1>Questions</h1>
+			<div className={classes.header}>
+				<span className={classes.head}>Questions</span>
+				<IconButton onClick={handleAdd}>
+					<AddIcon style={{ fontSize: 30 }} />
+				</IconButton>
+			</div>
+
 			{data.length === 0 ? (
 				<Loading style={{ height: "60vh" }} />
 			) : (
