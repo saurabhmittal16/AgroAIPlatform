@@ -57,7 +57,7 @@ const Login = props => {
 			localStorage.setItem("isFarmer", isFarmer);
 			localStorage.setItem("latt", response.data.lattitude);
 			localStorage.setItem("long", response.data.longitude);
-			props.history.push(isFarmer ? "/farmer" : "/buyer");
+			props.history.push(isFarmer === "true" ? "/farmer" : "/buyer");
 		} catch (err) {
 			console.log("Error", err.response.data.message);
 			setError(err.response.data.message);
