@@ -15,7 +15,7 @@ The client app for the AgroAI platform.
 -   [x] Buyer: Feed of crops
 -   [x] Buyer: Filters on feed of cropss
 -   [x] Farmer: Add question
--   [ ] Signup page
+-   [x] Signup page
 -   [ ] Maybe add profile page for farmer and buyer
 
 ## Points ignored for now

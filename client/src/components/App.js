@@ -7,6 +7,7 @@ import LanguageIcon from "@material-ui/icons/Language";
 import Loading from "./Utils/Loading";
 
 const Login = lazy(() => import("./Login"));
+const Signup = lazy(() => import("./Signup"));
 const FarmerContainer = lazy(() => import("./Farmer/Container"));
 const BuyerContainer = lazy(() => import("./Buyer/Container"));
 const NotFound = () => <h1>Page not found</h1>;
@@ -45,6 +46,7 @@ const App = () => {
 						}}
 					/>
 					<Route exact path="/login" component={Login} />
+					<Route exact path="/signup" component={Signup} />
 					<Route path="/farmer" component={FarmerContainer} />
 					<Route path="/buyer" component={BuyerContainer} />
 					<Route path="*" component={NotFound} />

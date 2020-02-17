@@ -13,6 +13,22 @@ export function login(mobile, password, isFarmer) {
 	return response;
 }
 
+export function signup(name, mobile, password, address, isFarmer, lattitude, longitude) {
+	let url = config.server_url;
+	url = url + "/api/auth" + (isFarmer === "true" ? "/farmer/signup" : "/buyer/signup");
+
+	const response = axios.post(url, {
+		name,
+		mobile,
+		address,
+		password,
+		lattitude,
+		longitude,
+	});
+
+	return response;
+}
+
 export function uploadImage(file) {
 	let url = config.model_url;
 	url = url + "/";
