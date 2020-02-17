@@ -80,6 +80,16 @@ export function getQuestionAnswers(id) {
 	return response;
 }
 
+export function addQuestion(question) {
+	let url = config.server_url + "/api/question";
+
+	const response = axios.post(url, {
+		question: question,
+	});
+
+	return response;
+}
+
 export function addAnswer(id, answer) {
 	let url = config.server_url + "/api/question/" + id + "/answer";
 

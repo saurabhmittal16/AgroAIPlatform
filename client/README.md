@@ -14,7 +14,7 @@ The client app for the AgroAI platform.
 -   [x] Farmer: Add distance betweeen farmer and buyer
 -   [x] Buyer: Feed of crops
 -   [x] Buyer: Filters on feed of cropss
--   [ ] Farmer: Add question
+-   [x] Farmer: Add question
 -   [ ] Signup page
 -   [ ] Maybe add profile page for farmer and buyer
 

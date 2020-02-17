@@ -64,6 +64,7 @@ const QuestionItem = props => {
 			<div>
 				<h2 style={{ marginBottom: 0 }}>Add Answer: </h2>
 				<TextField
+					multiline
 					value={answer}
 					onChange={e => setAnswer(e.target.value)}
 					style={{ width: "100%", background: "white", marginTop: "10px" }}
