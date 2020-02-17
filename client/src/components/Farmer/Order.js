@@ -3,6 +3,7 @@ import { getFarmerOrders } from "../../utils/network";
 import { makeStyles } from "@material-ui/core/styles";
 import { Card, CardContent, Typography, Modal, Backdrop, Fade } from "@material-ui/core";
 import Loading from "../Utils/Loading";
+import getDistance from "../../utils/distance";
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -97,6 +98,10 @@ const Order = () => {
 											<strong>Buyer Mobile: </strong>
 											{order.buyer.mobile}
 										</span>
+										<span>
+											<strong>Distance: </strong>
+											{getDistance(order.buyer.lattitude, order.buyer.longitude)} km
+										</span>
 										{/* <span>
 											<strong>Buyer Address: </strong>
 											{order.buyer.address}
@@ -157,6 +162,10 @@ const Order = () => {
 										{Date(data[index].createdAt)
 											.toString()
 											.substr(0, 15)}
+									</li>
+									<li>
+										<strong>Distance: </strong>
+										{getDistance(data[index].buyer.lattitude, data[index].buyer.longitude)} km
 									</li>
 								</ul>
 							</div>

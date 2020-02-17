@@ -55,6 +55,8 @@ const Login = props => {
 			setAuthHeaders(response.data.token);
 			localStorage.setItem("token", response.data.token);
 			localStorage.setItem("isFarmer", isFarmer);
+			localStorage.setItem("latt", response.data.lattitude);
+			localStorage.setItem("long", response.data.longitude);
 			props.history.push(isFarmer ? "/farmer" : "/buyer");
 		} catch (err) {
 			console.log("Error", err.response.data.message);

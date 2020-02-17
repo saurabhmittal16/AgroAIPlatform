@@ -11,6 +11,7 @@ The client app for the AgroAI platform.
 -   [x] Farmer: View orders
 -   [x] Buyer: View orders
 -   [x] Farmer: Ask question and answer
+-   [ ] Farmer: Add question
 -   [ ] Farmer: Add distance betweeen farmer and buyer
 -   [ ] Buyer: Feed of crops
 -   [ ] Buyer: Filters on feed of cropss
@@ -20,3 +21,4 @@ The client app for the AgroAI platform.
 
 -   No blocking of routes for unauthenticated and unauthorised users
 -   No appropriate display when no orders/listings/questions/answers
+-   Store data about signed-in user in local storage
