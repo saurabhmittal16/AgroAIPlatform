@@ -13,6 +13,7 @@ const improveListing = obj => {
 		quantity: obj.quantity,
 		farmerID: ownerData._id,
 		farmerName: ownerData.name,
+		farmerMobile: ownerData.mobile,
 		farmerAddress: ownerData.address,
 		farmerLattitude: ownerData.lattitude,
 		farmerLongitude: ownerData.longitude
@@ -68,6 +69,7 @@ exports.getListings = async (req, res) => {
 			const listings = await Listing.find({}).populate("owner", {
 				_id: 1,
 				name: 1,
+				mobile: 1,
 				address: 1,
 				lattitude: 1,
 				longitude: 1

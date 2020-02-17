@@ -5,7 +5,7 @@ import Loading from "../Utils/Loading";
 
 const Dashboard = lazy(() => import("./Dashboard"));
 const Order = lazy(() => import("./Order"));
-const Feed = () => <h1>Here are the listings</h1>;
+const Feed = lazy(() => import("./Feed"));
 const NotFound = () => <h1>Page not found</h1>;
 
 class Router extends React.Component {

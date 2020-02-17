@@ -59,6 +59,13 @@ export function getBuyerOrders() {
 	return response;
 }
 
+export function getBuyerFeed() {
+	let url = config.server_url + "/api/listing";
+
+	const response = axios.get(url);
+	return response;
+}
+
 export function getQuestionFeed() {
 	let url = config.server_url + "/api/question";
 

@@ -66,7 +66,7 @@ const Order = () => {
 					}}
 				>
 					{data.map((order, i) => {
-						console.log(order.farmer);
+						// console.log(order.farmer);
 						return (
 							<Card
 								className={classes.root}
@@ -75,7 +75,7 @@ const Order = () => {
 									setOpen(true);
 									setIndex(i);
 								}}
-								key={`farmer_${i}`}
+								key={`buyer_order_${i}`}
 							>
 								<CardContent>
 									<Typography className={classes.title} component="h1">
