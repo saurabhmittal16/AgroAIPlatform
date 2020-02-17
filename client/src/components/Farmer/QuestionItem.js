@@ -36,8 +36,10 @@ const QuestionItem = props => {
 		// console.log(id, answer);
 		try {
 			const response = await addAnswer(id, answer);
-			setChanged(changed + 1);
-			setData(null);
+			if (response.status === 200) {
+				setChanged(changed + 1);
+				setData(null);
+			}
 		} catch (err) {
 			console.log(err);
 		}
