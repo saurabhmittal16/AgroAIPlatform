@@ -1,3 +1,28 @@
 {
-	"title": "Welcome to AgroAI Platform"
+	"title": "Welcome to AgroAI Platform",
+	"f_dashboard": {
+		"new_crop": {
+			"header": "New Crop",
+			"sub": "Add a new crop which can be bought by buyers"
+		},
+		"listing": {
+			"header": "Listings",
+			"sub": "View the listings you have added"
+		},
+		"order": {
+			"header": "Orders",
+			"sub": "View the orders received"
+		},
+		"qna": {
+			"header": "Q/A",
+			"sub": "View questions added by others and answer"
+		}
+	},
+	"new": {
+		"title": "Add New Crop",
+		"1": "Enter the name of the crop",
+		"2": "Enter the quantity of the crop available",
+		"3": "Select an image of the crop",
+		"4": "Select a price in a range we have selected"
+	}
 }

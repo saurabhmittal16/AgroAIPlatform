@@ -10,6 +10,7 @@ import {
 	Typography,
 	Snackbar,
 } from "@material-ui/core";
+import { useTranslation } from "react-i18next";
 import { uploadImage, addListing } from "../../utils/network";
 import Dropzone from "react-dropzone";
 import config from "../../config";
@@ -18,6 +19,7 @@ import config from "../../config";
 const round = arg => Math.round(arg * 10) / 10;
 
 const AddCrop = props => {
+	const [t] = useTranslation();
 	const [name, setName] = useState("");
 	const [quantity, setquantity] = useState(0);
 	const [price, setPrice] = useState(0);
@@ -54,10 +56,10 @@ const AddCrop = props => {
 
 	return (
 		<div>
-			<h1>Add New Crop</h1>
+			<h1>{t("new.title")}</h1>
 
 			<form noValidate autoComplete="off" onSubmit={handleSubmit}>
-				<Typography style={{ marginBottom: "10px" }}>1) Enter the name of the crop</Typography>
+				<Typography style={{ marginBottom: "10px" }}>1) {t("new.1")}</Typography>
 				<FormControl fullWidth variant="outlined" style={{ marginBottom: "25px" }}>
 					<InputLabel htmlFor="outlined-text">Name</InputLabel>
 					<OutlinedInput
@@ -68,7 +70,7 @@ const AddCrop = props => {
 					/>
 				</FormControl>
 
-				<Typography style={{ marginBottom: "10px" }}>2) Enter the quantity of the crop available</Typography>
+				<Typography style={{ marginBottom: "10px" }}>2) {t("new.2")}</Typography>
 				<FormControl fullWidth variant="outlined" style={{ marginBottom: "25px" }}>
 					<InputLabel htmlFor="outlined-text">Quantity</InputLabel>
 					<OutlinedInput
@@ -81,7 +83,7 @@ const AddCrop = props => {
 					/>
 				</FormControl>
 
-				<Typography style={{ marginBottom: "5px" }}>3) Select an image of the crop</Typography>
+				<Typography style={{ marginBottom: "5px" }}>3) {t("new.3")}</Typography>
 				<Dropzone accept="image/*" noDrag={false} multiple={false} onDrop={files => handleUpload(files[0])}>
 					{({ getRootProps, getInputProps }) => (
 						<section style={{ marginBottom: "15px" }}>
@@ -122,9 +124,7 @@ const AddCrop = props => {
 
 				{showPrice && (
 					<>
-						<Typography style={{ marginBottom: "10px" }}>
-							4) Select a price in a range we have selected
-						</Typography>
+						<Typography style={{ marginBottom: "10px" }}>4) {t("new.4")}</Typography>
 						<FormControl fullWidth variant="outlined" style={{ marginBottom: "20px" }}>
 							<InputLabel htmlFor="outlined-text">Price</InputLabel>
 							<OutlinedInput

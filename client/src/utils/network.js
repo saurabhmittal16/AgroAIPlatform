@@ -31,7 +31,7 @@ export function signup(name, mobile, password, address, isFarmer, lattitude, lon
 
 export function uploadImage(file) {
 	let url = config.model_url;
-	url = url + "/";
+	url = url + "/image";
 
 	let formData = new FormData();
 	formData.append("file", file);
